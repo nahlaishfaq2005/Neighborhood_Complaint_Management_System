@@ -11,6 +11,7 @@ Hey friends! This is for you if you don’t know Git. Follow these steps to use 
    cd "C:\wamp64\www"
    
    git clone https://github.com/nahlaishfaq2005/Neighborhood_Complaint_Management_System.git
+   
    cd Neighborhood_Complaint_Management_System
 
 4. **Open in VS Code**  
