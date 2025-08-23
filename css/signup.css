@@ -4,7 +4,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('images/background.jpg') no-repeat center center fixed; /* your background image */
+    background: url('../images/background.png') no-repeat center center fixed; /* your background image */
     background-size: cover;
 }
 
@@ -17,12 +17,14 @@ body {
 /* Left side */
 .left-side {
     flex: 1;
-    background-color: rgba(230, 230, 230, 0.6); /* semi-transparent light grey */
+    background-color: rgba(255, 255, 255, 0.596);
+    backdrop-filter: blur(4px); /* glass effect */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+
 
 .left-side h1 {
     font-size: 40px;
@@ -48,7 +50,8 @@ body {
 
 /* Form box */
 .form-box {
-    background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(6px); 
     padding: 25px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -68,6 +71,13 @@ label {
     display: block;
     margin-top: 12px;
 }
+
+label span {
+    color: red;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
 
 /* Inputs */
 input {
