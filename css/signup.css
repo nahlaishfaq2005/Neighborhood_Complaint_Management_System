@@ -1,0 +1,144 @@
+/* Body background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('images/background.jpg') no-repeat center center fixed; /* your background image */
+    background-size: cover;
+}
+
+/* Container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left side */
+.left-side {
+    flex: 1;
+    background-color: rgba(230, 230, 230, 0.6); /* semi-transparent light grey */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left-side h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    line-height: 1.4;
+}
+
+.illustration img {
+    width: 80%;
+    max-width: 250px;
+    margin: 20px auto 0;
+    display: block;
+}
+
+/* Right side */
+.right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form box */
+.form-box {
+    background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 350px;
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-decoration: underline;
+    color: #333;
+}
+
+label {
+    font-size: 14px;
+    color: black;
+    display: block;
+    margin-top: 12px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+/* Inline error messages */
+span.error {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 3px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #024e9f;
+}
+
+/* Links and tagline */
+.form-box p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-box a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-box a:hover {
+    text-decoration: underline;
+}
+
+.tagline {
+    font-size: 18px;
+    color: #444;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* ===== Mobile-Friendly Tweak ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-side, .right-side {
+        flex: unset;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+}
