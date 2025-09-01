@@ -18,10 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if email or phone already exists
-    $checkQuery = "SELECT * FROM users WHERE email='$email' OR phone='$phone'";
-    $result = $conn->query($checkQuery);
+    $checkQuery = "SELECT * FROM users WHERE email=? OR phone=?";
+    $stmt = $conn->prepare($checkQuery);
+    $stmt->bind_param("ss", $email, $phone);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        echo "<script>alert('Email or Phone already registered!'); window.history.back();</script>";
+        echo "<script>alert('Email or Phone already registered!');</script>";
         exit;
     }
 
@@ -30,14 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert user into database
     $sql = "INSERT INTO users (full_name, address, phone, dob, email, password)
-            VALUES ('$fullname', '$address', '$phone', '$dob', '$email', '$hashedPassword')";
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssss", $fullname, $address, $phone, $dob, $email, $hashedPassword);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Signup successful!'); window.location.href='login.html';</script>";
+    if ($stmt->execute()) {
+        echo "<script>alert('Signup successful!'); window.location.href='login.php';</script>";
     } else {
         echo "Error: " . $conn->error;
     }
 
+    $stmt->close();
     $conn->close();
 }
 ?>

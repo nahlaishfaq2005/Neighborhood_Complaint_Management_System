@@ -142,6 +142,13 @@ button:hover {
     line-height: 1.5;
 }
 
+
+header .logo img {
+    width: 100px !important;
+    height: 100px !important;
+    border: 10px solid black;
+}
+
 /* ===== Mobile-Friendly Tweak ===== */
 @media (max-width: 768px) {
     .container {
