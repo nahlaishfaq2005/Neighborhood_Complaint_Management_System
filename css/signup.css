@@ -1,13 +1,3 @@
-/* Body background */
-
-/* Reset and basic styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('../images/background.jpg') no-repeat center center fixed; /* your background image */
-    background-size: cover;
-}
-
 /* Container */
 .container {
     display: flex;
