@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neighborhood Complaint System - Login</title>
+  <title>Forgot Password</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: Arial, sans-serif;
       height: 100vh;
@@ -31,23 +24,16 @@
       text-align: center;
     }
 
-    .logo {
-      margin-bottom: 15px;
-    }
-
-    .logo img {
-      width: 200px;
-    }
-
     h2 {
       margin-bottom: 20px;
       color: #fff;
-      font-size: 24px;
+      font-size: 22px;
     }
 
     .input-field {
-      width: 100%;
+      width: 94%;
       margin-bottom: 15px;
+      margin-right: 15px;
     }
 
     .input-field input {
@@ -95,22 +81,17 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <img src="/images/logo.png" alt="Neighborhood Complaint System">
-    </div>
-    <h2>Login</h2>
+    <h2>Forgot Password</h2>
+    <p style="color: #fff; margin-bottom: 20px;">
+      Enter your registered email or phone number. 
+      <br />We will send you reset instructions.
+    </p>
     <div class="input-field">
-      <input type="tel" placeholder="Phone Number">
+      <input type="email" placeholder="Email or Phone Number">
     </div>
-    <div class="input-field">
-      <input type="email" placeholder="Email">
-    </div>
-    <div class="input-field">
-      <input type="password" placeholder="Password">
-    </div>
-    <button class="btn">Login</button>
+    <button class="btn">Reset Password</button>
     <div class="options">
-      <a href="forget.html">Forgot Password?</a> | <a href="signup.html">Sign Up</a>
+      <a href="login.html">Back to Login</a>
     </div>
   </div>
 </body>
