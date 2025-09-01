@@ -1,22 +1,19 @@
 <?php
 // forget.php
-
-// Database connection
 $conn = new mysqli("localhost", "root", "", "your_database");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// When form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
 
-    // Check password match
+    // Check match
     if ($password !== $confirm_password) {
-        echo "Passwords do not match!";
+        echo "<script>alert('Passwords do not match!'); window.history.back();</script>";
         exit;
     }
 
@@ -27,18 +24,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $check->get_result();
 
     if ($result->num_rows > 0) {
-        // Update new password (hashed for security)
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $update = $conn->prepare("UPDATE users SET password=? WHERE email=?");
         $update->bind_param("ss", $hashedPassword, $email);
+
         if ($update->execute()) {
-            echo "Password updated successfully!";
+            echo "<script>
+                    alert('Password updated successfully!');
+                    setTimeout(function(){ window.location.href = 'login.html'; }, 1500);
+                  </script>";
         } else {
-            echo "Error updating password.";
+            echo "<script>alert('Error updating password.');</script>";
         }
     } else {
-        echo "Email not found!";
+        echo "<script>alert('Email not found!');</script>";
     }
 }
+
 $conn->close();
 ?>
