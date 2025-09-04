@@ -67,8 +67,9 @@ $conn->close();
 
     h2 {
       margin-bottom: 20px;
-      color: #fff;
+      color: #560087ff;
       font-size: 22px;
+      text-decoration: underline;
     }
 
     .input-field {
@@ -128,8 +129,8 @@ $conn->close();
   <div class="container">
     <h2>Reset Password</h2>
     <p style="color: #fff; margin-bottom: 20px;">
-      Enter your registered email.
-      <br> We will reset your password.
+      Enter your registered email. 
+      <br />We will reset your password.
     </p>
     <form action="forget.php" method="post">
       <div class="input-field">

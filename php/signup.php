@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Left side -->
         <div class="left-side">
             <div>
-                <img src="../images/logo.png" alt="Logo" width="100" height="80">
+                <img src="../images/logo.png" alt="Logo" width="180" height="130">
                 <h1>NeighborlyResolve</h1>
                 <p class="tagline">Connecting neighbors, sharing updates, building trust.</p>
                 <div class="illustration">
