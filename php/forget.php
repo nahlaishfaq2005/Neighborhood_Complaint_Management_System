@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if email exists
-    $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $check->bind_param("s", $email);
+    $check = $conn->prepare("SELECT * FROM users WHERE email = ? OR phone = ?");
+    $check->bind_param("ss", $email, $email);
     $check->execute();
     $result = $check->get_result();
 
