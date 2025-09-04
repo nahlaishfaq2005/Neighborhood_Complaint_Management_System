@@ -88,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Left side -->
         <div class="left-side">
             <div>
-                <img src="../images/logo.png" alt="Logo" width="180" height="130">
-                <h1>NeighborlyResolve</h1>
+                <img src="../images/logo.png" alt="Logo" width="100" height="110">
+                <h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
                 <p class="tagline">Connecting neighbors, sharing updates, building trust.</p>
                 <div class="illustration">
                     <img src="../images/handshake.png" alt="Community Illustration">

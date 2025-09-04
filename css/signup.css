@@ -51,8 +51,8 @@
 .form-box h2 {
     text-align: center;
     margin-bottom: 25px;
-    text-decoration: underline;
-    color: #333;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 label {
@@ -60,6 +60,7 @@ label {
     color: black;
     display: block;
     margin-top: 12px;
+    font-family: 'arial', sans-serif;
 }
 
 label span {
@@ -115,7 +116,7 @@ button:hover {
     text-align: center;
     margin-top: 15px;
     color:rgb(0, 0, 0);
-    /*font-weight: bold;*/
+    font-weight: bold;
 }
 
 .form-box a {
@@ -132,13 +133,6 @@ button:hover {
     color: #444;
     margin-top: 15px;
     line-height: 1.5;
-}
-
-
-header .logo img {
-    width: 100px !important;
-    height: 100px !important;
-    border: 10px solid black;
 }
 
 /* ===== Mobile-Friendly Tweak ===== */
