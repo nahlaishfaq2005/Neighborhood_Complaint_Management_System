@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   .logo { margin-bottom: 15px; }
-  .logo img { width: 200px; }
+  .logo img { width: 100px; }
 
   h2 { margin-bottom: 20px; color: #fff; font-size: 24px; }
 
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="container">
   <div class="logo">
-    <img src="../images/logo.png" alt="Neighborhood Complaint System">
+    <img src="../images/logo.png" alt="Neighborhood Complaint System"><h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
   </div>
   <h2>Login</h2>
   <!-- Form submits to this same PHP -->
