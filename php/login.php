@@ -3,8 +3,8 @@ session_start();
 include 'config.php'; // Make sure this connects to your DB
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = $_POST['login'] ?? ''; // can be email or phone
-    $password = $_POST['password'] ?? '';
+    $login = isset($_POST['login']) ? $_POST['login'] : ''; // can be email or phone
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     if (empty($login) || empty($password)) {
         echo "<script>alert('Please enter both email/phone and password.'); window.history.back();</script>";
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit" class="btn">Login</button>
   </form>
   <div class="options">
-    <a href="#">Forgot Password?</a> | <a href="signup.php">Sign Up</a>
+    <a href="forget.php">Forgot Password?</a> | <a href="signup.php">Sign Up</a>
   </div>
 </div>
 </body>
