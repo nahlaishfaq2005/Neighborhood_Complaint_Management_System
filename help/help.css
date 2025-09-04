@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background: #f9f9f9;
+}
+
+h1 {
+    text-align: center;
+    color: #801fa7;
+    margin-bottom: 30px;
+}
+.section{
+    position: relative;
+    margin: 50px 0 50px 100px;
+    border-left: 5px solid #801fa7;
+}
+.section h2{
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 20px;
+}
+.section h2::before{
+    content: "";
+    position: absolute;
+    left: -15px;
+    top:20px;
+    width: 20px;
+    height: 20px;
+    background: #912fed;
+    border: 3px solid #fff; 
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #2f80ed33; /
+
+}
+.section ul li {
+  
+  color: #555555;
+}
+.section ul{
+    margin-top: -10px;
+    list-style: none; 
+    padding-left: 20px;
+}
+.section ul li::before {
+  content: "➤";     
+  color: #801fa7;   
+  font-weight: bold; 
+  font-size: 15px;   
+  display: inline-block;
+  width: 20px;        
+}
