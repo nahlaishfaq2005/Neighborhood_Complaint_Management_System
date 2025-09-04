@@ -7,6 +7,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $dob = $_POST['dob'];
+    $birthDate = new DateTime($dob);
+    $today = new DateTime();
+    $age = $today->diff($birthDate)->y;
+
+    if ($birthDate > $today) {
+        echo "<script>alert('Birthday cannot be in the future!'); window.history.back();</script>";
+        exit;
+    }
+    if ($age < 18) {
+        echo "<script>alert('You must be at least 18 years old!'); window.history.back();</script>";
+        exit;
+    }
+    if ($age > 120) {
+        echo "<script>alert('Please enter a realistic birthday!'); window.history.back();</script>";
+        exit;
+    }
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['confirm']; // corrected name
@@ -72,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Left side -->
         <div class="left-side">
             <div>
-                <h1>Neighbor Management System</h1>
+                <img src="../images/logo.png" alt="Logo" width="180" height="130">
+                <h1>NeighborlyResolve</h1>
                 <p class="tagline">Connecting neighbors, sharing updates, building trust.</p>
                 <div class="illustration">
                     <img src="../images/handshake.png" alt="Community Illustration">
@@ -120,6 +137,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </div>
 
-    <script src="js/signup.js"></script>
+    <script src="../js/signup.js"></script>
 </body>
 </html>
