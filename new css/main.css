@@ -11,6 +11,14 @@ body {
     width: 100px;
     height: 110px;
 }
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px; /* Adds space between the title and the login box */
+    color: white;
+}
 
 .glass-container {
     background-color: rgba(255, 255, 255, 0.2);
@@ -19,10 +27,9 @@ body {
     border-radius: 10px;
     box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.441); 
     font-family: 'arial', sans-serif;
+    
 
 }
-
-
 
 
 .illustration img {
@@ -32,28 +39,31 @@ body {
     display: block;
 }
 
-/* Form box */
-.form-box {
-    background: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: blur(6px);
-    padding: 25px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    width: 350px;
-}
+    .form-box {
+        background: rgba(255,255,255,0.45);
+        backdrop-filter: blur(4px);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        padding: 40px 40px;
+
+    }
+
+
 
 .form-box h2 {
     text-align: center;
     margin-bottom: 25px;
-    font-weight: bold;
-    color: #ffffff;
+    font-weight: bolder;
+    color: hsl(272, 100%, 50%);
 }
 
 label {
-    font-size: 14px;
+ 
+    margin-top: 12px;
+    font-weight: bold;
     color: black;
     display: block;
-    margin-top: 12px;
+    margin-top: 10px;
     font-family: 'arial', sans-serif;
 }
 
@@ -62,7 +72,6 @@ label span {
     font-weight: bold;
     margin-left: 2px;
 }
-
 
 /* Inputs */
 input {
@@ -90,7 +99,7 @@ span.error {
 /* Button */
 button {
     width: 100%;
-    background-color: hsl(272, 100%, 50%);
+    background-color: rgb(112, 0, 209);
     color: white;
     padding: 12px;
     border: none;
@@ -98,11 +107,12 @@ button {
     margin-top: 20px;
     cursor: pointer;
     font-size: 16px;
+    text-align: center;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #8c02db;
+    background-color:hsl(272, 90%,40%);
 }
 
 /* Links and tagline */
@@ -159,6 +169,7 @@ button:hover {
     color:rgb(128, 19, 147);
     font-weight: bold;
     font-size: large;
+    z-index: 1000;
 
 
 }
@@ -177,5 +188,9 @@ button:hover {
       transition: 0.3s;
 
 }
+    .navbar ul li a:hover {
+        color: #8c02db;
+        transition: 0.3s;
+    }
 
     

@@ -13,7 +13,7 @@
 
 <ul>
     <li><a href="addcomplaint.php">Add a Complaint</a></li>
-    <li><a href="#">My Complaints</a></li>
+    <li><a href="mycomplaints.php">My Complaints</a></li>
     <li><a href="#">Community Dashboard</a></li>
     <!-- <li><a href="#">Profile Settings</a></li> -->
     <li><a href="#">Logout</a></li>

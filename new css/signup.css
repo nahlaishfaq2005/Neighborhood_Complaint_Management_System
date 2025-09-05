@@ -15,14 +15,13 @@
     align-items: center;
     text-align: center;
 }
-
-
 .left-side h1 {
     font-size: 40px;
     font-weight: bold;
     color: black;
     line-height: 1.4;
 }
+
 /* Right side */
 .right-side {
     flex: 1;
@@ -30,3 +29,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.form-box {
+        width: 350px;
+        
+}
+
