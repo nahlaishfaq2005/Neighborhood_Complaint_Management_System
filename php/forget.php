@@ -1,8 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
 include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $password = $_POST["password"];
@@ -21,38 +23,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if email and phone exist together
-    $check = $conn->prepare("SELECT id FROM users WHERE email = ? AND phone = ?");
+    $check = $conn->prepare("SELECT user_id FROM users WHERE email = ? AND phone = ?");
     if (!$check) {
-        echo "<script>alert('Database error: " . $conn->error . "'); window.history.back();</script>";
+        echo "<script>alert('Database connection error. Please try again later.'); window.history.back();</script>";
         exit;
     }
+
     $check->bind_param("ss", $email, $phone);
     $check->execute();
     $result = $check->get_result();
 
     if ($result->num_rows > 0) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
         $update = $conn->prepare("UPDATE users SET password=? WHERE email=? AND phone=?");
         $update->bind_param("sss", $hashedPassword, $email, $phone);
-        $update->execute();
-
-        echo "<script>
-                alert('Your password has been reset successfully.');
-                window.location.href = 'login.php';
-              </script>";
+        
+        if ($update->execute()) {
+            echo "<script>
+                    alert('Your password has been reset successfully.');
+                    window.location.href = 'login.php';
+                  </script>";
+        } else {
+            echo "<script>alert('Failed to update password. Please try again.'); window.history.back();</script>";
+        }
+        
         $update->close();
-        exit;
     } else {
-        echo "<script>
-                alert('No account found with that email and phone.');
-                window.history.back();
-            </script>";
-        exit;
+        echo "<script>alert('No account found with that email and phone.'); window.history.back();</script>";
     }
+
     $check->close();
-    $conn->close();
 }
+
+// Close database connection after all operations
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
