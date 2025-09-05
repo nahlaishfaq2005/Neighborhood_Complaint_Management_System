@@ -1,3 +1,4 @@
+
 header {
     position: fixed;
     top: 0;
@@ -84,7 +85,8 @@ section.main {
     flex-direction: column;  /* stack items vertically */
     align-items: center;     /* center horizontally */
     justify-content: center; /* center vertically */
-    min-height: 80vh;        /* take most of the viewport height */
+    min-height: 100vh;  
+    width: 100%;      /* take most of the viewport height */
     padding: 20px 30px;
     gap: 20px;
 
@@ -102,7 +104,7 @@ section.main section.heading{
 section.main section.heading h1 {
     display: inline-block;
     background: rgba(255, 255, 255, 0.5); /* transparent white (30%) */
-    font-size: 70px;
+    font-size: 3.5rem;
     border-radius: 10px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -111,21 +113,22 @@ section.main section.heading h1 {
 }
 
 section.main .text-content {
-
-    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center; /* vertically center content inside text-content */
     min-width: 300px;
     max-width: 600px;
-    margin-top: 50px;
+    height: 100%; /* take full height of main section */
+    margin-top: 0;
 }
 .text-content p {
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: Arial, Helvetica, sans-serif;
-    color: #3f2241;
+    color: #2c1230;   /* deeper purple tone for readability */
     font-weight: 500;
     line-height: 1.6;
-    max-width: 650px;
-    margin-top: -30px; 
+    margin-top: 0; 
     /* keeps the paragraph readable */
 }
 section.main nav a {
@@ -284,6 +287,22 @@ section.features .features-box li:hover {
     transform: scale(1.08);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+/* Make all main sections full width */
+section.main,
+section.features,
+.cta-bar,
+footer {
+    width: 100%;
+    box-sizing: border-box; /* ensures padding doesn't break full width */
+}
+
+section.main .text-content,
+section.features .features-box ul {
+    width: 90%;       /* almost full width */
+    max-width: 800px; /* optional limit for readability */
+    margin: 0 auto;
+}
+
 footer {
     background-color: #2e0e38;   
     color: #ffffff;              
