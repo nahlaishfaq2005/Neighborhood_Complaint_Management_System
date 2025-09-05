@@ -20,9 +20,19 @@
     text-align: center;
   }
 
-.logo-title img {
-  width: 60px;
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
+.logo img {
+  width: 80px;
+  height: 90px;
+  margin-bottom: 10px;
+}
+
+
 
 h1 {
     color: #4b2c91;
