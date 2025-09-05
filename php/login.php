@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on role
             if ($user['role'] === 'admin') {
-                echo "<script>window.location.href='../adminhome.html';</script>";
+                echo "<script>window.location.href='adminhome.php';</script>";
             } else {
                 echo "<script>window.location.href='userhome.php';</script>";
             }
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Neighborhood Complaint System - Login</title>
-<link rel="stylesheet" href="../new css/main.css">
+
 <link rel="stylesheet" href="../new css/login.css">
 </head>
 <body>

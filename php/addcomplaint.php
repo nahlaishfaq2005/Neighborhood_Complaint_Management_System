@@ -21,9 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imagePaths = "";
     if (!empty($_FILES['images']['name'][0])) {
         $uploadDir = "uploads/";
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
         foreach ($_FILES['images']['name'] as $key => $name) {
             $tmpName = $_FILES['images']['tmp_name'][$key];
             $filePath = $uploadDir . time() . "_" . basename($name);
@@ -33,15 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Use logged-in user's ID from session
+    // Logged-in user's ID
     $user_id = $_SESSION['user_id'];
 
+    // Default status and remarks
+    $status  = 'pending';
+    $remarks = 'Waiting for remarks';
+
     // Insert complaint into DB
-    $sql = "INSERT INTO complaints (user_id, title, type, severity, description, incident_date, location, images)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO complaints 
+            (user_id, title, type, severity, description, incident_date, location, images, status, remarks)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssssss", $user_id, $title, $type, $severity, $description, $date, $location, $imagePaths);
+    $stmt->bind_param("isssssssss", $user_id, $title, $type, $severity, $description, $date, $location, $imagePaths, $status, $remarks);
 
     if ($stmt->execute()) {
         echo "<script>alert('Complaint submitted successfully!'); window.location.href='mycomplaints.php';</script>";
@@ -68,7 +71,6 @@ body {
     background: url('../images/background.jpg') no-repeat center center fixed;
     background-size: cover;
 }
-
 .container {
     display: flex;
     justify-content: center;
@@ -78,12 +80,10 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
 }
-
 .form-box {
     margin: 20px 0;
     width: 750px;
 }
-
 input, textarea, select {
     width: 100%;
     padding: 12px;
@@ -95,19 +95,16 @@ input, textarea, select {
     font-size: 16px;
     box-sizing: border-box;
 }
-
 input:focus, textarea:focus, select:focus {
     border-color: #8c02db;
     box-shadow: 0 0 5px #8c02db;
 }
-
 .checkbox-group {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 15px;
 }
-
 .checkbox-item {
     display: flex;
     align-items: center;
@@ -118,19 +115,16 @@ input:focus, textarea:focus, select:focus {
     cursor: pointer;
     transition: 0.3s;
 }
-
 .checkbox-item input[type="checkbox"] {
     margin-right: 8px;
     accent-color: #8c02db;
     width: 18px;
     height: 18px;
 }
-
 .checkbox-item:hover {
     background-color: rgba(140, 2, 219, 0.1);
     border-color: #8c02db;
 }
-
 button {
     width: 100%;
     background-color: hsl(272, 100%, 50%);
@@ -143,20 +137,13 @@ button {
     cursor: pointer;
     transition: 0.3s;
 }
-
 button:hover {
     background-color: #8c02db;
     transform: translateY(-2px);
 }
-
 @media(max-width: 650px){
-    .form-box {
-        width: 95%;
-        padding: 30px 20px;
-    }
-    .checkbox-group {
-        flex-direction: column;
-    }
+    .form-box { width: 95%; padding: 30px 20px; }
+    .checkbox-group { flex-direction: column; }
 }
 </style>
 </head>
