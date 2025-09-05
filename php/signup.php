@@ -73,9 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
     <link rel="stylesheet" href="../new css/main.css">  
-    <link rel="stylesheet" href="../new css/signup.css"> 
-
-
+    <link rel="stylesheet" href="../new css/signup.css">
+    
 </head>
 <body>
     <div class="container">
@@ -95,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Right side -->
         <div class="right-side">
             <div class="form-box glass-container glass-padding">
-                <h2>Signup</h2>
+                <h2 style="color: #4e01d3ff;text-decoration: underline;">Signup</h2>
                 <form id="signupForm" action="signup.php" method="POST">
 
                     <label for="fullname">Full Name <span>*</span></label>

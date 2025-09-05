@@ -53,9 +53,8 @@ $conn->close();
   <div class="container">
     <img src="../images/logo.png" alt="Neighborhood Complaint System" width="100" height="110">
     <h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
-    <p style="color: #fff; margin-bottom: 20px;font-size: 18px;">
-      Enter your registered email. 
-      <br />We will reset your password.
+    <p style="color: #fff; margin-bottom: 20px;font-size: 15px;">
+    Enter your registered email to reset your password.
     </p>
     <form action="forget.php" method="post">
       <div class="input-field">
