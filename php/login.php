@@ -28,9 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['phone'] = $user['phone'];
+            $_SESSION['role'] = $user['role']; // save role in session
 
-            // Redirect to user.html (adjust path if needed)
-            echo "<script>window.location.href='../user.html';</script>";
+            // Redirect based on role
+            if ($user['role'] === 'admin') {
+                echo "<script>window.location.href='../adminhome.html';</script>";
+            } else {
+                echo "<script>window.location.href='userhome.php';</script>";
+            }
             exit;
         } else {
             echo "<script>alert('Incorrect password.'); window.history.back();</script>";
@@ -113,7 +118,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="container">
   <div class="logo">
-    <img src="../images/logo.png" alt="Neighborhood Complaint System"><h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
+    <img src="../images/logo.png" alt="Neighborhood Complaint System">
+    <h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
   </div>
   <h2>Login</h2>
   <!-- Form submits to this same PHP -->
@@ -130,5 +136,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <a href="forget.php">Forgot Password?</a> | <a href="signup.php">Sign Up</a>
   </div>
 </div>
-</body>
+</body> 
 </html>
