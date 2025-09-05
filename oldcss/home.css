@@ -1,4 +1,6 @@
-header{
+
+
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,11 +10,24 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
-    background-color:rgba(255, 255, 255, 0.6) ;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+
+    /* Gradient + semi-transparent */
+    background: linear-gradient(
+        135deg, 
+        rgba(166, 122, 252, 0.3),  /* light purple with transparency */
+        rgba(128, 31, 167, 0.3)    /* dark purple with transparency */
+    );
+    
+    backdrop-filter: blur(10px);      /* glass blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.5);  /* subtle border */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);    /* subtle shadow */
+
     z-index: 1000; 
+    font-family: 'Arial', sans-serif;
 }
+
+
 header .left {
     display: flex;
     align-items: center;
@@ -27,7 +42,7 @@ header .logo img{
     
    
 header h1{
-    font-size: 35px;
+    font-size: 30px;
     color:#801fa7 ;
     font-weight: bold;
     margin: 0;
@@ -88,7 +103,7 @@ section.main section.heading{
 
 
 section.main section.heading h1 {
-    font-size: 60px;
+    font-size: 70px;
     font-weight: bold;
     margin: 0;
     line-height: 1; /* keeps lines close but readable */
@@ -100,8 +115,9 @@ section.main .text-content {
     margin-top: -70px;
 }
 .text-content p {
-    font-size: 16px;
-    color: #555;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3b3a3a;
     line-height: 1.6;
     margin: 20px 0;
     max-width: 500px;
@@ -139,6 +155,7 @@ section.main .mainpic {
 section.main .mainpic img {
     width: 600px;
     max-width: 100%;
+    height: 350px;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(75, 0, 130, 0.3);;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
