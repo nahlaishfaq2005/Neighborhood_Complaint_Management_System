@@ -103,25 +103,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <label for="fullname">Full Name <span>*</span></label>
                 <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                <span class="error"></span>
 
                 <label for="address">Address <span>*</span></label>
                 <input type="text" id="address" name="address" required placeholder="Enter your address">
+                <span class="error"></span>
 
                 <label for="phone">Phone Number <span>*</span></label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="07XXXXXXXX" required>
+                <span class="error"></span>
 
                 <label for="email">Email <span>*</span></label>
                 <input type="email" id="email" name="email" required placeholder="Enter your email">
+                <span class="error"></span>
 
                 <label for="dob">Birthday <span>*</span></label>
                 <input type="date" id="dob" name="dob" required>
+                <span class="error"></span>
 
                 <label for="password">Password <span>*</span></label>
                 <input type="password" id="password" name="password" required placeholder="Enter your password">
+                <span class="error"></span>
 
                 <label for="confirm">Confirm Password <span>*</span></label>
                 <input type="password" id="confirm" name="confirm" required placeholder="Confirm your password">
-
+                <span class="error"></span>
+                <br>
                 <button type="submit">Signup</button>
             </form>
             <p>Already have an account? <a href="login.php">Login</a></p>
