@@ -63,8 +63,8 @@ document.getElementById("signupForm").onsubmit = function(e) {
     }
 
     // Password validation
-    if (password.length < 6) {
-        document.getElementById("password").nextElementSibling.innerText = "Password must be at least 6 characters!";
+    if (password.length <= 3) {
+        document.getElementById("password").nextElementSibling.innerText = "Password must be at least 4 characters!";
         valid = false;
     }
 
