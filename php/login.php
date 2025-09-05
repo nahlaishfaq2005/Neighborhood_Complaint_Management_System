@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <img src="../images/logo.png" alt="Neighborhood Complaint System">
   <h1>Neighborly Resolve</h1>
   </div>
-  <h2>Login</h2>
+  <h2 style="text-decoration: underline;">Login</h2>
   <!-- Form submits to this same PHP -->
   <form action="login.php" method="POST">
     <div class="input-field">
