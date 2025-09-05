@@ -75,13 +75,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 20px;
-    padding-top: 140px;
+    margin-top: 0px;
+    padding-top: 50px;
     min-height: 100vh;
     box-sizing: border-box;
 }
 .form-box {
-    margin: 20px 0;
+    margin: 0px 0;
     width: 750px;
 }
 input, textarea, select {
@@ -151,11 +151,15 @@ button:hover {
 
 <!-- Navbar -->
 <nav class="navbar glass-container">
-    <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
+    <div class="navbar-brand">
+        <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
+        <h1>NeighborlyResolve</h1>
+    </div>
     <ul>
-        <li><a href="addcomplaint.php">Add a Complaint</a></li>
+        <li><a href="userhome.php">Add a Complaint</a></li>
         <li><a href="mycomplaints.php">My Complaints</a></li>
         <li><a href="communitydashboard.php">Community Dashboard</a></li>
+        <li><a href="help.php">Help</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>

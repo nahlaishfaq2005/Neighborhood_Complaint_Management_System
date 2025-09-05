@@ -270,3 +270,22 @@ form input, form textarea, form select {
 .status.resolved {
     background-color: green;
 }
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px; /* Adjust gap as needed */
+}
+
+.navbar-brand h1 {
+    font-size: 1.8rem;
+    color: #000000ff;
+    margin: 0;
+}

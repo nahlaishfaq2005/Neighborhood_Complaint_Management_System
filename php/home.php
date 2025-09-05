@@ -49,8 +49,10 @@ body {
     text-align: center;
     min-height: 100vh;
     padding: 50px 20px;
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 50px;
+    border:none;
+    border-radius: 0px;
 }
 
 .main .heading h1 {
