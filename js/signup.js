@@ -64,7 +64,7 @@ document.getElementById("signupForm").onsubmit = function(e) {
 
     // Password validation
     if (password.length <= 3) {
-        document.getElementById("password").nextElementSibling.innerText = "Password must be at least 4 characters!";
+        document.getElementById("password").nextElementSibling.innerText = "Password must be at least 3 characters!";
         valid = false;
     }
 
