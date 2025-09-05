@@ -1,0 +1,75 @@
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/background2.jpg") no-repeat center center/cover;
+  }
+
+  .container {
+    width: 360px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+  }
+
+.logo-title img {
+  width: 60px;
+}
+
+h1 {
+    color: #4b2c91;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+ h2 {
+  margin-bottom: 20px;
+  color: #4b2c91;  
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+
+  .input-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #4b2c91;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn:hover { background: #f1f1f1; }
+
+  .options { margin-top: 15px; font-size: 14px; color: #fff; }
+  .options a { color: #fff; text-decoration: none; margin: 0 5px; }
+  .options a:hover { text-decoration: underline; }
