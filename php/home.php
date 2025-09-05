@@ -222,8 +222,9 @@ footer {
         <h1>NeighborlyResolve</h1>
     </div>
     <ul>
-        <a href="../php/login.php">Login</a>
-        <a href="../php/signup.php">Signup</a>
+        <a href="login.php">Login</a>
+        <a href="signup.php">Signup</a>
+        <a href="help.php">Help</a>
     </ul>
 </nav>
 
