@@ -45,16 +45,20 @@ $complaints = mysqli_query($conn, "
 
 <!-- Navbar -->
 <nav class="navbar glass-container">
-    <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
+    <div class="navbar-brand">
+        <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
+        <h1>NeighborlyResolve</h1>
+    </div>
     <ul>
-        <li><a href="addcomplaint.php">Add a Complaint</a></li>
+        <li><a href="userhome.php">Add a Complaint</a></li>
         <li><a href="mycomplaints.php">My Complaints</a></li>
         <li><a href="communitydashboard.php">Community Dashboard</a></li>
+        <li><a href="help.php">Help</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
 
-<div style="margin-top:140px;">
+<div style="margin-top:50px;">
 
 <?php while($row = mysqli_fetch_assoc($complaints)): ?>
 <div class="card other-user">
