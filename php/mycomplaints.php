@@ -49,7 +49,11 @@ if (isset($_POST['update'])) {
         }
     }
 
-    mysqli_query($conn, "UPDATE complaints SET title='$title', type='$type', severity='$severity', description='$description', incident_date='$date', location='$location', images='$images' WHERE complaint_id=$id AND user_id=$user_id");
+    mysqli_query($conn, "UPDATE complaints 
+        SET title='$title', type='$type', severity='$severity', description='$description', 
+            incident_date='$date', location='$location', images='$images' 
+        WHERE complaint_id=$id AND user_id=$user_id");
+
     header("Location: mycomplaints.php");
     exit;
 }
@@ -65,21 +69,16 @@ $complaints = mysqli_query($conn, "SELECT * FROM complaints WHERE user_id=$user_
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Complaints</title>
 <link rel="stylesheet" href="../new css/main.css">
-<style>
-.card { background: rgba(255,255,255,0.45); padding: 20px; margin: 20px auto; border-radius: 10px; max-width: 800px; }
-.card img { max-width: 150px; margin: 5px; border-radius: 5px; }
-.actions a { padding: 5px 10px; background: hsl(272,100%,50%); color: #fff; text-decoration: none; margin-right: 10px; border-radius:5px; }
-.actions a:hover { background: #8c02db; }
-form input, form textarea, form select { width: 100%; margin-bottom: 10px; padding:8px; border-radius:5px; }
-</style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar glass-container">
-    <img src="../images/logo.png" class="logo">
+    <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
     <ul>
         <li><a href="addcomplaint.php">Add a Complaint</a></li>
         <li><a href="mycomplaints.php">My Complaints</a></li>
+        <li><a href="communitydashboard.php">Community Dashboard</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
@@ -113,16 +112,23 @@ form input, form textarea, form select { width: 100%; margin-bottom: 10px; paddi
 
 <?php while($row = mysqli_fetch_assoc($complaints)): ?>
 <div class="card">
-    <h3><?= $row['title'] ?></h3>
-    <p><strong>Type:</strong> <?= $row['type'] ?></p>
-    <p><strong>Severity:</strong> <?= $row['severity'] ?></p>
-    <p><strong>Description:</strong> <?= $row['description'] ?></p>
-    <p><strong>Date:</strong> <?= $row['incident_date'] ?></p>
-    <p><strong>Location:</strong> <?= $row['location'] ?></p>
+    <h3><?= htmlspecialchars($row['title']) ?></h3>
+    <p><strong>Type:</strong> <?= htmlspecialchars($row['type']) ?></p>
+    <p><strong>Severity:</strong> <?= htmlspecialchars($row['severity']) ?></p>
+    <p><strong>Description:</strong> <?= nl2br(htmlspecialchars($row['description'])) ?></p>
+    <p><strong>Date:</strong> <?= htmlspecialchars($row['incident_date']) ?></p>
+    <p><strong>Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
+    <p><strong>Status:</strong> 
+        <span class="status <?= htmlspecialchars($row['status']) ?>">
+            <?= ucfirst(str_replace('_', ' ', $row['status'])) ?>
+        </span>
+    </p>
+
     <?php if(!empty($row['images'])): 
         $imgs = explode(';',$row['images']); ?>
         <?php foreach($imgs as $img) if($img) echo "<img src='$img'>"; ?>
     <?php endif; ?>
+
     <div class="actions">
         <a href="mycomplaints.php?edit=<?= $row['complaint_id'] ?>">Edit</a>
         <a href="mycomplaints.php?delete=<?= $row['complaint_id'] ?>" onclick="return confirm('Delete?')">Delete</a>
