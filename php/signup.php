@@ -40,7 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkstmt->execute();
     $result = $checkstmt->get_result();
     if ($result->num_rows > 0) {
-        echo "<script>alert('Email or Phone already registered!');</script>";
+        echo "<script>
+                alert('Email or Phone already registered!');
+                window.location.href='signup.php';
+              </script>";
         $checkstmt->close();    
         $conn->close();     
         exit;
