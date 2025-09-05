@@ -72,24 +72,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
-    <link rel="stylesheet" href="../css/signup.css">
-    <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: url('../images/background.jpg') no-repeat center center fixed;
-        background-size: cover;
-    }
-    </style>
+    <link rel="stylesheet" href="../new css/main.css">  
+    <link rel="stylesheet" href="../new css/signup.css"> 
+
+
 </head>
 <body>
     <div class="container">
 
         <!-- Left side -->
-        <div class="left-side">
-            <div>
-                <img src="../images/logo.png" alt="Logo" width="180" height="130">
-                <h1>NeighborlyResolve</h1>
+        <div class="left-side glass-container glass-padding">
+            <div >
+                <img src="../images/logo.png" alt="Logo" class="logo">
+                <h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
                 <p class="tagline">Connecting neighbors, sharing updates, building trust.</p>
                 <div class="illustration">
                     <img src="../images/handshake.png" alt="Community Illustration">
@@ -99,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Right side -->
         <div class="right-side">
-            <div class="form-box">
+            <div class="form-box glass-container glass-padding">
                 <h2>Signup</h2>
                 <form id="signupForm" action="signup.php" method="POST">
 

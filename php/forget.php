@@ -127,8 +127,9 @@ $conn->close();
 </head>
 <body>
   <div class="container">
-    <h2>Reset Password</h2>
-    <p style="color: #fff; margin-bottom: 20px;">
+    <img src="../images/logo.png" alt="Neighborhood Complaint System" width="100" height="110">
+    <h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
+    <p style="color: #fff; margin-bottom: 20px;font-size: 18px;">
       Enter your registered email. 
       <br />We will reset your password.
     </p>
@@ -137,7 +138,7 @@ $conn->close();
       <input type="email" name="email" placeholder="Enter your Email" required><br><br>
       <input type="password" name="password" placeholder="Enter New Password" required><br><br>
       <input type="password" name="confirm_password" placeholder="Confirm New Password" required><br><br>
-      <button class='btn'type="submit">Reset</button>
+      <button class='btn'type="submit">Reset Password</button>
     </div>
     <div class="options">
       <a href="login.php">Back to Login</a>
