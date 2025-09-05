@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['phone'] = $user['phone'];
 
             // Redirect to user.html (adjust path if needed)
-            echo "<script>window.location.href='../user.html';</script>";
+            header("Location: ../user.html");
             exit;
         } else {
             echo "<script>alert('Incorrect password.'); window.history.back();</script>";
@@ -52,68 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Neighborhood Complaint System - Login</title>
-<style>
-  /* Reset */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url("../images/background2.jpg") no-repeat center center/cover;
-  }
-
-  .container {
-    width: 360px;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    text-align: center;
-  }
-
-  .logo { margin-bottom: 15px; }
-  .logo img { width: 100px; }
-
-  h2 { margin-bottom: 20px; color: #fff; font-size: 24px; }
-
-  .input-field { width: 100%; margin-bottom: 15px; }
-  .input-field input {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    font-size: 15px;
-  }
-
-  .btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #fff;
-    color: #4b2c91;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .btn:hover { background: #f1f1f1; }
-
-  .options { margin-top: 15px; font-size: 14px; color: #fff; }
-  .options a { color: #fff; text-decoration: none; margin: 0 5px; }
-  .options a:hover { text-decoration: underline; }
-</style>
+<link rel="stylesheet" href="../new css/main.css">
+<link rel="stylesheet" href="../new css/login.css">
 </head>
 <body>
 <div class="container">
-  <div class="logo">
-    <img src="../images/logo.png" alt="Neighborhood Complaint System"><h1 style="color: #4e01d3ff;">Neighborly Resolve</h1>
+  <div class="logo-title">
+  <img src="../images/logo.png" alt="Neighborhood Complaint System">
+  <h1>Neighborly Resolve</h1>
   </div>
   <h2>Login</h2>
   <!-- Form submits to this same PHP -->
