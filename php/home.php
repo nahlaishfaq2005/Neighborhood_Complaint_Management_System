@@ -269,7 +269,7 @@ footer {
         Join thousands of residents making their neighborhoods better, one report at a time.
     </p>
     <nav>
-        <a href="../php/login.php">Report an Issue</a>
+        <a href="signup.php">Report an Issue</a>
     </nav>
 </section>
 
@@ -292,7 +292,7 @@ footer {
 <section class="cta-bar glass-container">
     <h2>Ready to Make a Difference?</h2>
     <p>Join thousands of neighbors who are actively improving their communities. Your voice matters, and together we can create positive change.</p>
-    <a href="../php/signup.php" class="cta-button">Join Now</a>
+    <a href="signup.php" class="cta-button">Join Now</a>
 </section>
 
 <!-- Footer -->
