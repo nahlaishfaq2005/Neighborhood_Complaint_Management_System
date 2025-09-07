@@ -23,15 +23,42 @@ body {
 
 /* Navbar */
 .navbar {
+    position: fixed;
     display: flex;
-    align-items: center;
+    top: 0;              
+    left: 0;          
+    width: 100%;
     justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    
+}
+.navbar.glass-container ul{
+    list-style: none;
+    display: flex;
+    gap:40px;
+    margin-right:50px;
+    padding:0;
+}
+.navbar.glass-container ul a {
+    text-decoration: none; 
+    border-radius: 8px;
+    color: #3d045eff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.navbar.glass-container ul a:hover {
+    background-color: #3d045eff;
+    padding: 5px 5px;
+    color:white;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 18px; /* Adjust gap as needed */
+    gap: 18px; 
 }
 
 .navbar-brand h1 {
@@ -57,6 +84,7 @@ body {
 
 .main .heading h1 {
     font-size: 60px;
+    margin-top:70px;
     font-weight: bold;
     margin-bottom: 20px;
     padding: 30px 40px;
@@ -73,6 +101,7 @@ body {
 /* Button */
 .main nav a {
     background-color: #801fa7;
+    text-decoration: none;
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -83,7 +112,7 @@ body {
 }
 
 .main nav a:hover {
-    background-color: #6d1794;
+    background-color: #3d045eff;
     transform: scale(1.1);
 }
 

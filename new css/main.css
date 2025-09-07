@@ -19,31 +19,34 @@ body {
     color: white;
 }
 
-.glass-container {
+.navbar.glass-container {
+    
+    top: 0;
+    margin-bottom: 50px;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.441); 
     font-family: 'arial', sans-serif;
-    
+    z-index: 1000;
 
 }
-.navbar ul, .glass-container ul{
+.navbar.glass-container ul{
     list-style: none;
     display: flex;
-    gap:15px;
-    margin:0;
+    gap: 25px;
+    margin-right: 60px;
     padding:0;
 }
-.navbar ul li a {
+.navbar.glass-container ul li a {
     text-decoration: none; 
     border-radius: 8px;
     color: #3d045eff;
     font-weight: bold;
     transition: 0.3s;
 }
-.navbar ul li a:hover {
+.navbar.glass-container ul li a:hover {
     background-color: #3d045eff;
     padding: 5px 5px;
     color:white;
@@ -214,7 +217,7 @@ button:hover {
 .card { 
     background: rgba(255,255,255,0.45); 
     padding: 20px; 
-    margin: 20px auto; 
+    margin: 200px auto 20px auto; 
     border-radius: 10px; 
     max-width: 800px; 
 }

@@ -71,21 +71,32 @@ body {
     background: url('../images/background.jpg') no-repeat center center fixed;
     background-size: cover;
 }
-.navbar glass-container ul{
+.navbar.glass-container ul{
     list-style: none;
     display: flex;
-    gap:15px;
-    margin:0;
+    gap:25px;
+    margin-right:60px;
     padding:0;
 }
-.navbar ul li a {
+.navbar {
+    position: fixed;
+    display: flex;
+    top: 0;              
+    left: 0;          
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    
+}
+.navbar.glass-container ul li a {
     text-decoration: none; 
     border-radius: 8px;
     color: #3d045eff;
     font-weight: bold;
     transition: 0.3s;
 }
-.navbar ul li a:hover {
+.navbar.glass-container ul li a:hover {
     background-color: #3d045eff;
     padding: 5px 5px;
     color:white;
@@ -95,14 +106,13 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: 0px;
-    padding-top: 50px;
+    align-items: center;
+    padding-top: 180px;
+    padding-bottom: 50px;
     min-height: 100vh;
     box-sizing: border-box;
 }
 .form-box {
-    margin: 0px 0;
     width: 750px;
 }
 input, textarea, select {
