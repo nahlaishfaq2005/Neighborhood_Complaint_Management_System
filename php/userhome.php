@@ -71,6 +71,27 @@ body {
     background: url('../images/background.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+.navbar glass-container ul{
+    list-style: none;
+    display: flex;
+    gap:15px;
+    margin:0;
+    padding:0;
+}
+.navbar ul li a {
+    text-decoration: none; 
+    border-radius: 8px;
+    color: #3d045eff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.navbar ul li a:hover {
+    background-color: #3d045eff;
+    padding: 5px 5px;
+    color:white;
+    transform: translateY(-2px); /* slight lift effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional shadow */
+}
 .container {
     display: flex;
     justify-content: center;

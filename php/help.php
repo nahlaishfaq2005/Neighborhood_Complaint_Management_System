@@ -99,7 +99,7 @@
         <h2>How to Signup</h2>
         <ul>
             <li>Go to the <b>Home page</b> of the system.</li>
-            <li>Click on the <b>"Signup"</b> at the top right corner.</li>
+            <li>Click on the <b>Signup</b> at the top right corner.</li>
             <li>Fill in the required details.</li>
             <li>Click <b>Signup</b> to create your account.</li>
         </ul>
@@ -109,7 +109,7 @@
         <h2>How to Login</h2>
         <ul>
             <li>If you already have an account, you can login using your credentials.</li>
-            <li>Click on the <b>"Login"</b> at the top right corner.</li>
+            <li>Click on the <b>Login</b> at the top right corner.</li>
             <li>Enter your username and password.</li>
             <li>Click <b>Login</b> to access your account.</li>
         </ul>
@@ -119,21 +119,42 @@
         <h2>How to Submit a Complaint</h2>
         <ul>
             <li>Login to your account.</li>
-            <li>Navigate to the <b>"Submit Complaint"</b> page.</li>
+            <li>Navigate to the <b>Add a Complaint</b> page.</li>
             <li>Fill in the complaint details.</li>
-            <li>Click <b>Submit</b> to send your complaint.</li>
+            <li>Click <b>Submit Complaint</b> to send your complaint.</li>
         </ul>
     </div>
 
-    <div class="timeline-item">
-        <h2>How to Track Complaint Status</h2>
+    
+        <div class="timeline-item">
+        <h2>How to View Your Complaints</h2>
         <ul>
             <li>Login to your account.</li>
-            <li>Go to <b>"My Complaints"</b>.</li>
-            <li>Click on any complaint to see its current status.</li>
+            <li>Go to <b>My Complaints</b>page.</li>
+            <li>You can see the list of all complaints you have submitted.</li>
         </ul>
     </div>
+    <div class="timeline-item">
+    <h2>How to Edit or Delete Your Complaint</h2>
+    <ul>
+        <li>Login to your account.</li>
+        <li>Go to the <b>My Complaints</b> page.</li>
+        <li>You will see <b>Edit</b> and <b>Delete</b> buttons under to each complaint.</li>
+        <li>To edit a complaint: click <b>Edit</b>, update the details, and click <b>Update</b> to save changes.</li>
+        <li>To delete a complaint: click <b>Delete</b> and confirm the deletion when prompted.</li>
+    </ul>
+    </div>
+    <div class="timeline-item">
+    <h2>View Other Users' Complaints</h2>
+    <ul>
+        <li>Login to your account.</li>
+        <li>Go to the <b>Community Dashboard</b> page.</li>
+        <li>You will see a list of complaints submitted by other users.</li>
+        <li>This helps you stay informed about issues in your neighborhood.</li>
+    </ul>
+    </div>
 </div>
+
 
 </body>
 </html>
