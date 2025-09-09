@@ -2,13 +2,12 @@
 session_start();
 include 'config.php';
 
-// Ensure admin is logged in
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit;
 }
 
-// DELETE a complaint
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
     mysqli_query($conn, "DELETE FROM complaints WHERE complaint_id = $delete_id");
@@ -16,7 +15,7 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// EDIT a complaint (admin can edit only status & remarks)
+
 $editData = null;
 if (isset($_GET['edit'])) {
     $edit_id = intval($_GET['edit']);
@@ -29,7 +28,6 @@ if (isset($_GET['edit'])) {
     $editData = mysqli_fetch_assoc($result);
 }
 
-// Handle edit form submission
 if (isset($_POST['update'])) {
     $id = intval($_POST['complaint_id']);
     $status = $_POST['status'];
@@ -43,7 +41,7 @@ if (isset($_POST['update'])) {
     exit;
 }
 
-// Fetch all complaints except the one being edited
+
 $where_edit = $editData ? "WHERE c.complaint_id != ".$editData['complaint_id'] : "";
 $complaints = mysqli_query($conn, "
     SELECT c.*, u.full_name 

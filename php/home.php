@@ -225,23 +225,7 @@ footer {
     border-top: 1px solid #764b86;
 }
 
-/* Responsive adjustments */
-@media(max-width:768px){
-    .main .heading h1 {
-        font-size: 40px;
-        padding: 20px 25px;
-    }
-    .features .content h2 {
-        font-size: 28px;
-    }
-    .features .features-box li {
-        min-width: 180px;
-        font-size: 18px;
-    }
-    .cta-bar h2 {
-        font-size: 26px;
-    }
-}
+
 </style>
 </head>
 <body>

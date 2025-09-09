@@ -1,14 +1,13 @@
 <?php
 session_start();
-include 'config.php'; // Database connection
+include 'config.php'; 
 
-// Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
-// Handle form submission
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title       = $_POST['title'];
     $type        = $_POST['type'];
@@ -17,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date        = $_POST['date'];
     $location    = $_POST['location'];
 
-    // Handle image upload
+   
     $imagePaths = "";
     if (!empty($_FILES['images']['name'][0])) {
         $uploadDir = "uploads/";
@@ -31,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Logged-in user's ID
+    
     $user_id = $_SESSION['user_id'];
 
-    // Default status and remarks
+   
     $status  = 'pending';
     $remarks = 'Waiting for remarks';
 
-    // Insert complaint into DB
+
     $sql = "INSERT INTO complaints 
             (user_id, title, type, severity, description, incident_date, location, images, status, remarks)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

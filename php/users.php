@@ -2,17 +2,17 @@
 session_start();
 include 'config.php';
 
-// Ensure admin is logged in
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit;
 }
 
-// DELETE a user (only role = 'user')
+
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
     
-    // Check the user's role first
+    /
     $check = mysqli_query($conn, "SELECT role FROM users WHERE user_id = $delete_id");
     $user = mysqli_fetch_assoc($check);
     
@@ -24,7 +24,7 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// Fetch all users
+
 $users = mysqli_query($conn, "SELECT * FROM users WHERE role = 'user' ORDER BY created_at DESC");
 ?>
 
@@ -64,7 +64,7 @@ $users = mysqli_query($conn, "SELECT * FROM users WHERE role = 'user' ORDER BY c
     <p><strong>Role:</strong> <?= htmlspecialchars($row['role']) ?></p>
 
     <div class="actions">
-        <?php if($row['role'] != 'admin'): // Only delete users ?>
+        <?php if($row['role'] != 'admin'): ?>
         <a href="users.php?delete=<?= $row['user_id'] ?>" onclick="return confirm('Delete this user?')">Delete</a>
         <?php endif; ?>
     </div>

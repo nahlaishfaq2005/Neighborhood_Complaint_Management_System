@@ -2,7 +2,6 @@
 session_start();
 include 'config.php';
 
-// Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -10,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch complaints from other users with their names
+
 $complaints = mysqli_query($conn, "
     SELECT c.*, u.full_name 
     FROM complaints c
@@ -28,7 +27,7 @@ $complaints = mysqli_query($conn, "
 <title>Community Dashboard</title>
 <link rel="stylesheet" href="../new css/main.css">
 <style>
-/* Optional: highlight other users' complaints */
+
 
 .status {
     font-weight: bold;

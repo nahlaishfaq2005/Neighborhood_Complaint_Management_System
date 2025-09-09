@@ -1,9 +1,9 @@
 <?php
-session_start(); //store data across multiple pages
-include 'config.php'; // Make sure this connects to your DB
+session_start(); 
+include 'config.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = isset($_POST['login']) ? $_POST['login'] : ''; // can be email or phone enter blank or not?
+    $login = isset($_POST['login']) ? $_POST['login'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     if (empty($login) || empty($password)) {
@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Prepare query: check either email or phone
     $sql = "SELECT * FROM users WHERE email = ? OR phone = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $login, $login);
@@ -20,18 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
-        //fetch_assoc() only fetches one row at a time from the result set...rwecll itt
+        
 
-        // Verify hashed password
+        
         if (password_verify($password, $user['password'])) {
-            // Login success: save session
-           $_SESSION['user_id'] = $user['user_id']; /// $_SESSION is a superglobal variable used to store information across different pages.
+            
+           $_SESSION['user_id'] = $user['user_id']; 
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['phone'] = $user['phone'];
-            $_SESSION['role'] = $user['role']; // save role in session
-
-            // Redirect based on role
+            $_SESSION['role'] = $user['role']; 
             if ($user['role'] === 'admin') {
                 echo "<script>window.location.href='adminhome.php';</script>";
             } else {
@@ -47,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $stmt->close(); //Frees memory,resources
+    $stmt->close(); 
     $conn->close();
   
 }
@@ -68,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h1 style="color: #4e01d3ff;margin-top: 70px;">Neighborly Resolve</h1>
   </div>
   <h2 style="text-decoration: underline;">Login</h2>
-  <!-- Form submits to this same PHP -->
+  
+
   <form action="login.php" method="POST">
     <div class="input-field">
       <input type="text" name="login" placeholder="Email or Phone" required>
@@ -82,5 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <a href="forget.php">Forgot Password?</a> | <a href="signup.php">Sign Up</a>
   </div>
 </div>
+
+
 </body> 
 </html>

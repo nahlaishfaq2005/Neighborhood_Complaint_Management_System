@@ -2,7 +2,7 @@
 session_start();
 include 'config.php';
 
-// Ensure user is logged in
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// DELETE a complaint
+
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
     mysqli_query($conn, "DELETE FROM complaints WHERE complaint_id=$delete_id AND user_id=$user_id");
@@ -18,7 +18,6 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// EDIT a complaint
 $editData = null;
 if (isset($_GET['edit'])) {
     $edit_id = intval($_GET['edit']);
@@ -26,7 +25,7 @@ if (isset($_GET['edit'])) {
     $editData = mysqli_fetch_assoc($result);
 }
 
-// Handle edit form submission
+
 if (isset($_POST['update'])) {
     $id = intval($_POST['complaint_id']);
     $title = $_POST['title'];
@@ -36,7 +35,7 @@ if (isset($_POST['update'])) {
     $date = $_POST['incident_date'];
     $location = $_POST['location'];
 
-    // Optional: images
+    
     $images = $editData['images'];
     if (!empty($_FILES['images']['name'][0])) {
         $uploadDir = "uploads/";
@@ -58,7 +57,7 @@ if (isset($_POST['update'])) {
     exit;
 }
 
-// Fetch all complaints
+
 $complaints = mysqli_query($conn, "SELECT * FROM complaints WHERE user_id=$user_id ORDER BY created_at DESC");
 ?>
 
@@ -72,7 +71,7 @@ $complaints = mysqli_query($conn, "SELECT * FROM complaints WHERE user_id=$user_
 </head>
 <body>
 
-<!-- Navbar -->
+
 <nav class="navbar glass-container">
     <div class="navbar-brand">
         <img src="../images/logo.png" alt="Logo" class="logo" style="width:100px;height:110px;">
