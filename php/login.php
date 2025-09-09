@@ -1,9 +1,9 @@
 <?php
-session_start();
+session_start(); //store data across multiple pages
 include 'config.php'; // Make sure this connects to your DB
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = isset($_POST['login']) ? $_POST['login'] : ''; // can be email or phone
+    $login = isset($_POST['login']) ? $_POST['login'] : ''; // can be email or phone enter blank or not?
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     if (empty($login) || empty($password)) {
@@ -20,11 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
+        //fetch_assoc() only fetches one row at a time from the result set...rwecll itt
 
         // Verify hashed password
         if (password_verify($password, $user['password'])) {
             // Login success: save session
-            $_SESSION['user_id'] = $user['user_id'];
+           $_SESSION['user_id'] = $user['user_id']; /// $_SESSION is a superglobal variable used to store information across different pages.
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['phone'] = $user['phone'];
@@ -46,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $stmt->close();
+    $stmt->close(); //Frees memory,resources
     $conn->close();
   
 }

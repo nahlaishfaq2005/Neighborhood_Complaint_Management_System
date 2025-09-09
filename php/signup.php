@@ -2,16 +2,54 @@
 include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
+
+    // Get and trim form data
     $fullname = trim($_POST['fullname']);
     $address = trim($_POST['address']);
     $phone = trim($_POST['phone']);
     $dob = $_POST['dob'];
-    $birthDate = new DateTime($dob);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $cpassword = $_POST['confirm'];
+
     $today = new DateTime();
+    $birthDate = new DateTime($dob);
     $age = $today->diff($birthDate)->y;
 
-    // Age validation
+    // -----------------------
+    // Full Name Validation
+    // -----------------------
+    if (empty($fullname)) {
+        echo "<script>alert('Full name is required!'); window.history.back();</script>";//window.history.back(); "Go back to the previous page in the browsing history
+    }
+    if (!preg_match("/^[a-zA-Z ]+$/", $fullname)) {//regex pattern.
+        echo "<script>alert('Full name can only contain letters and spaces!'); window.history.back();</script>";
+        exit;
+    }
+
+    // -----------------------
+    // Address Validation
+    // -----------------------
+    if (empty($address)) {
+        echo "<script>alert('Address is required!'); window.history.back();</script>";
+        exit;
+    }
+    if (strlen($address) < 5) {
+        echo "<script>alert('Address is too short!'); window.history.back();</script>";
+        exit;
+    }
+
+    // -----------------------
+    // Phone Validation
+    // -----------------------
+    if (!preg_match("/^[0-9]{10}$/", $phone)) {
+        echo "<script>alert('Phone must be exactly 10 digits!'); window.history.back();</script>";
+        exit;
+    }
+
+    // -----------------------
+    // DOB / Age Validation
+    // -----------------------
     if ($birthDate > $today) {
         echo "<script>alert('Birthday cannot be in the future!'); window.history.back();</script>";
         exit;
@@ -24,24 +62,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Please enter a realistic birthday!'); window.history.back();</script>";
         exit;
     }
+    $year = (int)$birthDate->format("Y");
+    if ($year < 1900) {
+        echo "<script>alert('Please enter a realistic year of birth!'); window.history.back();</script>";
+        exit;
+    }
 
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $cpassword = $_POST['confirm'];
+    // -----------------------
+    // Email Validation
+    // -----------------------
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Invalid email format!'); window.history.back();</script>";
+        exit;
+    }
 
-    // Password match check
+    // -----------------------
+    // Password Validation (simplified)
+    // -----------------------
+    if (strlen($password) < 3) {
+        echo "<script>alert('Password must be at least 3 characters!'); window.history.back();</script>";
+        exit;
+    }
     if ($password !== $cpassword) {
         echo "<script>alert('Passwords do not match!'); window.history.back();</script>";
         exit;
     }
 
-    // Check if email or phone already exists
+    // -----------------------
+    // Check for existing email or phone
+    // -----------------------
     $checkQuery = "SELECT * FROM users WHERE email=? OR phone=?";
+    //??  this prevents SQL injection
+
     $checkstmt = $conn->prepare($checkQuery);
     $checkstmt->bind_param("ss", $email, $phone);
     $checkstmt->execute();
     $result = $checkstmt->get_result();
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) {  //result no of rows ->
         echo "<script>alert('Email or Phone already registered!'); window.history.back();</script>";
         $checkstmt->close();    
         $conn->close();     
@@ -49,13 +106,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $checkstmt->close();
 
-    // Hash password
+    // -----------------------
+    // Hash Password and Insert
+    // -----------------------
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // Set default role
+    //strongest available algorithm in PHP
     $role = 'user';
 
-    // Insert user into database
     $sql = "INSERT INTO users (full_name, address, phone, dob, email, password, role)
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $insertstmt = $conn->prepare($sql);
@@ -71,6 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

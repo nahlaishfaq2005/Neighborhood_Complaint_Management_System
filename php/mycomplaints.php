@@ -88,31 +88,68 @@ $complaints = mysqli_query($conn, "SELECT * FROM complaints WHERE user_id=$user_
 </nav>
 
 <div style="margin-top:50px;">
-
 <?php if($editData): ?>
 <div class="card">
-    <h3>Edit Complaint</h3>
-    <form method="post" enctype="multipart/form-data">
-        <input type="hidden" name="complaint_id" value="<?= $editData['complaint_id'] ?>">
-        <input type="text" name="title" value="<?= $editData['title'] ?>" required>
-        <select name="type">
-            <?php 
-            $types = ['noise','garbage','safety','water','parking','streetlight','road','electricity','pollution','pets','other'];
-            foreach($types as $t){
-                $sel = $editData['type']==$t?'selected':'';
-                echo "<option value='$t' $sel>$t</option>";
+    <div class="form-box">
+        <h2>Edit Complaint</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="complaint_id" value="<?= $editData['complaint_id'] ?>">
+            
+            <label for="title">Complaint Title <span>*</span></label>
+            <input type="text" id="title" name="title" value="<?= htmlspecialchars($editData['title']) ?>" required>
+
+            <label for="type">Complaint Type <span>*</span></label>
+            <select id="type" name="type" required>
+                <?php 
+                $types = ['noise','garbage','safety','water','parking','streetlight','road','electricity','pollution','pets','other'];
+                foreach($types as $t){
+                    $selected = $editData['type']==$t ? 'selected' : '';
+                    echo "<option value='$t' $selected>$t</option>";
+                }
+                ?>
+            </select>
+
+            <label>Severity <span>*</span></label>
+            <div class="radiobutton-group">
+                <?php
+                $severities = ['Low','Medium','High'];
+                foreach($severities as $s){
+                    $checked = ($editData['severity']==$s) ? 'checked' : '';
+                    echo '<label class="radiobutton-item">
+                            <input type="radio" name="severity" value="'.$s.'" '.$checked.' required>
+                            '.$s.'
+                          </label>';
+                }
+                ?>
+            </div>
+
+            <label for="description">Complaint Description <span>*</span></label>
+            <textarea id="description" name="description" rows="5" required><?= htmlspecialchars($editData['description']) ?></textarea>
+
+            <label for="incident_date">Date of Incident</label>
+            <input type="date" id="incident_date" name="incident_date" value="<?= $editData['incident_date'] ?>">
+
+            <label for="location">Location / Neighborhood</label>
+            <input type="text" id="location" name="location" value="<?= htmlspecialchars($editData['location']) ?>">
+
+            <label for="images">Attach Images</label>
+            <input type="file" id="images" name="images[]" multiple>
+            <?php
+            if(!empty($editData['images'])){
+                $imgs = explode(';', $editData['images']);
+                foreach($imgs as $img){
+                    if($img) echo "<img src='$img' style='width:80px;height:80px;margin:5px;'>";
+                }
             }
             ?>
-        </select>
-        <input type="text" name="severity" value="<?= $editData['severity'] ?>">
-        <textarea name="description"><?= $editData['description'] ?></textarea>
-        <input type="date" name="incident_date" value="<?= $editData['incident_date'] ?>">
-        <input type="text" name="location" value="<?= $editData['location'] ?>">
-        <input type="file" name="images[]" multiple>
-        <button type="submit" name="update">Update</button>
-    </form>
+
+            <button type="submit" name="update">Update Complaint</button>
+        </form>
+    </div>
 </div>
 <?php endif; ?>
+
+
 
 <?php while($row = mysqli_fetch_assoc($complaints)): ?>
 <div class="card">

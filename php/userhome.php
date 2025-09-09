@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title       = $_POST['title'];
     $type        = $_POST['type'];
-    $severity    = isset($_POST['severity']) ? implode(",", $_POST['severity']) : "";
+    $severity = isset($_POST['severity']) ? $_POST['severity'] : "";//if entered or not ?
     $description = $_POST['complaint'];
     $date        = $_POST['date'];
     $location    = $_POST['location'];
@@ -111,9 +111,11 @@ body {
     padding-bottom: 50px;
     min-height: 100vh;
     box-sizing: border-box;
+    
 }
 .form-box {
     width: 750px;
+ 
 }
 input, textarea, select {
     width: 100%;
@@ -130,13 +132,13 @@ input:focus, textarea:focus, select:focus {
     border-color: #8c02db;
     box-shadow: 0 0 5px #8c02db;
 }
-.checkbox-group {
+.radiobutton-group {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 15px;
 }
-.checkbox-item {
+.radiobutton-item {
     display: flex;
     align-items: center;
     background-color: rgba(255,255,255,0.3);
@@ -146,13 +148,13 @@ input:focus, textarea:focus, select:focus {
     cursor: pointer;
     transition: 0.3s;
 }
-.checkbox-item input[type="checkbox"] {
+.radiobutton-item input[type="radio"] {
     margin-right: 8px;
     accent-color: #8c02db;
     width: 18px;
     height: 18px;
 }
-.checkbox-item:hover {
+.radiobutton-item:hover {
     background-color: rgba(140, 2, 219, 0.1);
     border-color: #8c02db;
 }
@@ -200,9 +202,11 @@ button:hover {
     <div class="form-box">
         <h2>Submit a Neighborhood Complaint</h2>
         <form action="" method="post" enctype="multipart/form-data">
+            <!-- both text + file data. -->
 
             <label for="title">Complaint Title <span>*</span></label>
-            <input type="text" id="title" name="title" placeholder="Enter a short title" required>
+            <input type="text" id="title" name="title" placeholder="Enter a short title" required>+
+            
 
             <label for="type">Complaint Type <span>*</span></label>
             <select id="type" name="type" required>
@@ -220,21 +224,24 @@ button:hover {
                 <option value="other">Other</option>
             </select>
 
-            <label>Severity Level</label>
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="low" name="severity[]" value="Low">
-                    <label for="low">Low</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="medium" name="severity[]" value="Medium">
-                    <label for="medium">Medium</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="high" name="severity[]" value="High">
-                    <label for="high">High</label>
-                </div>
+            <label>Severity <span>*</span></label>
+            <div class="radiobutton-group">
+                <label class="radiobutton-item">
+                    <input type="radio" id="low" name="severity" value="Low" required>
+                    Low
+                </label>
+
+                <label class="radiobutton-item">
+                    <input type="radio" id="medium" name="severity" value="Medium">
+                    Medium
+                </label>
+
+                <label class="radiobutton-item">
+                    <input type="radio" id="high" name="severity" value="High">
+                    High
+                </label>
             </div>
+
 
             <label for="complaint">Complaint Description <span>*</span></label>
             <textarea id="complaint" name="complaint" rows="5" placeholder="Describe your complaint" required></textarea>
