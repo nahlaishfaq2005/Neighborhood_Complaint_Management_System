@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 if (isset($_GET['delete'])) {
     $delete_id = intval($_GET['delete']);
     
-    /
+    
     $check = mysqli_query($conn, "SELECT role FROM users WHERE user_id = $delete_id");
     $user = mysqli_fetch_assoc($check);
     
